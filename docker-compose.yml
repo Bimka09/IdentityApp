@@ -1,0 +1,31 @@
+services:
+
+  identity-db:
+    image: "postgres:16"
+    container_name: 'identity-pgdb'
+    restart: always 
+    ports:
+      - 5732:5432
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=Identity
+    volumes:
+      - identity-db:/var/lib/postgresql/data
+
+  products-db:
+    image: "postgres:16"
+    container_name: 'products-pgdb'
+    restart: always 
+    ports:
+      - 5733:5432
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=Products
+    volumes:
+      - products-db:/var/lib/postgresql/data
+
+volumes:
+  identity-db:
+  products-db:
